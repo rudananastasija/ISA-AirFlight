@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script type="text/javascript" src="/js/reserveFlight.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Reservation</title>
+<style>
+
+.form-header,#nemaPonuda{
+	text-align: center;
+    margin-bottom: 20px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  border: 2px solid green;
+   border-collapse: collapse;
+  padding: 10px;
+}
+.center {
+  width: 800px;
+  background: #5F85DB;
+  color: #fff;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+ .booking-form {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    border-radius: 3px;
+}
+form{
+	 	 		text-align: center;
+	 	 	}
+	 	 	
+	 	 	
+	 	 	.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+</style>
+</head>
+<body onload="onLoad()">
+	<div class="container">
+		<h1>Reserve Seats</h1>
+	</div>
+
+
+	<div class="container" id="pregledSedista">
+		<div  class= "col-md-8">
+			<div class="row" id="seats">
+				
+			</div>
+		</div>
+		<div class= "col-md-4">
+			<table>
+				<tr><td>Reserved</td><td style="background-color: grey"></td></tr>
+				<tr><td>Free</td><td style="background-color: rgb(255, 255, 255)"></td></tr>
+				<tr><td>Taken</td><td style="background-color: rgb(187, 148, 231)"></td></tr>
+			</table>
+		</div>	
+	</div>
+	
+	<div class="container" id="pregledPrijatelja">
+		<div class = "row">
+			<h3>Search friends:</h3>
+		</div>
+		<div class = row>
+			<div  class= "col-md-8">
+				<input type="text" id="searchFriends"  placeholder="Search for friends">
+			</div>
+		</div>	
+		
+		<div class = "row" id = "prijatelji">
+		</div>
+	</div>
+	
+	<div class="container" id="passengers">
+		<div class="booking-form">
+	   		<div class="form-header">
+	   			<h1 id=passenger>Passenger</h1>
+	   		</div>
+	   		<form>
+	   			<div class="row">
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "name" type="text" required placeholder="First Name">
+												<span id="errorName"></span>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "lastName" type="text" required placeholder="Last Name">
+												<span id="errorLastName"></span>
+										</div>
+							</div>
+	   			</div>
+	   			<div class="row">
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "birthday" type="date" required placeholder="birthday">
+												<span id="errorDestination"></span>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "phone" type="tel" required placeholder="Phone(eg. 021-996-4545)"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+												<span id="errorEndDestination"></span>
+										</div>
+							</div>
+	   			</div>
+	   			<div class="row">
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "passport" type="text" required placeholder="Passport">
+												<span id="errorName"></span>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" id = "email" type="email"  placeholder="email">
+												<span id="errorLastName"></span>
+										</div>
+							</div>
+	   			</div>
+	   			<div class="row">
+		   			<div class="col-md-6">
+			   			<div class="form-group">
+			   				<button type="button" class="btn btn-primary" onclick="addPassenger()" id="addPasenger">Add</button>
+			   			</div>
+			   		</div>
+	   			</div>
+	   			
+	   	 </form>
+  		</div>
+	</div>
+	
+	<div id="finishReservation" class="center">
+		<div class = "row">
+			<div class="col-md-6">
+				<h2>Do you want to reserve hotel ?</h2>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-light" onclick="hotels()">Hotels</button>
+			</div>		
+		</div>
+		<div class = "row">
+			<div class="col-md-6">
+				<h2>Do you want to reserve rent-a-car ?</h2>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-light" id = "rc" onclick="rentAcar()">Cars</button>
+			</div>		
+		</div>
+		<div class = "row">
+			<div class="col-md-6">
+				<h2>Do you want to reserve hotel and rent-a-car ?</h2>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-light" id="both" onclick="both()">Hotels and Rent-a-car</button>
+			</div>		
+		</div>	
+	</div>
+	
+	
+	<div class="container" id="buttons">
+		<div class = "row">
+			<div  class= "col-md-3">
+			</div>
+			<div class= "col-md-3">
+			</div>
+			<div class= "col-md-3">
+				<button type="button" id="backBtn" class="btn btn-default" onclick="back()">Back</button>
+			
+			</div>	
+			<div class= "col-md-3">
+				<button type="button" id="nextBtn" class="btn btn-primary" onclick="dalje()">Next</button>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+		  
+	
+</body>
+</html>

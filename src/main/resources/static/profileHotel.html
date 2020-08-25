@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hotel profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript"  src="/js/profileHotel.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+ 
+  <style>
+  	header{
+			background-color: white;
+   			font-size: 36px;
+   			font-weight: bold;
+ 		 	font-family: "Comic Sans MS", cursive, serif;
+		    border-bottom: 2px solid #C3C3C3;
+		    padding: 4px;
+ 	}
+ 	#labelaBroj{
+ 		margin-bottom:1px;
+ 	}
+ 	#ispisiSelectBodovi{
+ 		margin-top:1px;
+ 		
+ 	}
+ 	#informacije{
+ 		margin-top:5px;
+ 	 	margin-left:20px;
+ 	 	font-size:23px;
+ 	 	
+ 		text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		margin-bottom:5px;
+ 		
+ 	}
+ 	 .jumbotron{
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding-left: 15px;
+ 	 }
+ 	 #ukljuceneUsluge{
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	margin-top:5px;
+ 	 	width:30%;
+ 	 	margin-left:20px;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 	 	font-size:18px;
+ 	
+ 	 }
+ 	  #tabelaKonfig{
+ 	 	border: 1px solid #C3C3C3;
+ 	 	border-radius: 3px;
+ 	 	margin-top:5px;
+ 	 	width:40%;
+ 	 	margin-left:20px;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 	 	font-size:18px;
+ 	
+ 	 }
+ 	 .okvir{
+ 	    border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding : 5px;
+ 	 	text-color:#bfbfbf !important;
+ 	 	margin-top:2px;
+ 	 }
+ 	 #dugmePopustBonus{
+ 	 	margin-top:14px;
+ 	 	padding:7px;
+ 	 }
+ 	 #dugmePopust{
+ 	 		margin-top:12px;
+ 	 
+ 	 }
+ 	 .okvir:hover{
+ 	 	background-color: #C3C3C3;
+ 	 }
+ 	 .col-md-2{
+ 	 	text-color:#bfbfbf;
+ 	 	text-align: center;
+ 	 	margin-top:2px;
+ 	 }
+ 	 .row{
+ 	 padding-right: 13px;
+ 	 margin-right:0px;
+ 	 }
+ 	 .container{
+ 	 	margin-left:5px;
+ 	 	margin-top:1px;
+ 	 }
+ 	 h3{
+ 	  margin-left:25px;
+ 	 	text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		 margin-bottom:0px;
+ 	 }
+ 	 button[type = submit],#buttonID{
+ 	 	margin-left:30%;
+ 	 	margin-top: 5px;
+ 	 	
+ 	 }
+ 	 #vrijednostPrihoda{
+ 	 	 margin-left:25px;
+ 	 
+ 	 }
+ 	 #hAdmin,#h2Ad{
+ 		margin-left:25px;
+ 	 	text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		 margin-bottom:8px;
+ 	 
+ 	 }
+ 	 #nemaFast{
+ 	  margin-top:10px;
+ 	  margin-left:25px;
+ 	  text-color:#bfbfbf;
+ 	  font-family: "Times New Roman", Times, serif;
+ 	  margin-bottom:8px;
+ 	  font-size:17px;
+ 	 }
+ 	 #dodatne{
+ 	 	width: 40%;
+  		
+ 	 }
+ 	 #look{
+ 		padding:5px;
+ 		font-weight: bold;
+ 		font-family: "Comic Sans MS", serif;
+		    
+ 	}
+ 	 #buttonID{
+ 	 	margin-left:15px;
+ 	 }
+ 	 #dodajPopust,#sobePopusti,#postojeciPopusti,#izvestajSoba{
+ 	 width:80%;
+ 	 }
+ 	 #dugmePopustHotel{
+ 	 		margin-left:320px;
+ 			padding:5px;
+ 	 		margin-top:3px;
+ 	 		margin-bottom:3px;
+ 	 }
+ 	 #divPopust, #tabovi{
+ 		padding-right: 10px;
+  		 margin-right:10px;
+ 	 	
+ 	 }
+ 	 #DugmeFast{
+ 	 	padding-left:8px;
+ 	 	padding-rigth:8px;
+ 	 	padding-top:3px;
+ 	 	padding-bottom:3px;
+ 	 	
+ 	 	margin-left:15px;
+ 		
+ 	 }
+ 	 #tabovi{
+ 	 	width:97%;
+ 	 }
+ 	 #dodajPopust{
+ 	 	padding-top: 10px;
+ 	 
+ 	 }
+ 	 #pass{
+ 	  margin-top:10px;
+ 	  margin-left:25px;
+ 	  text-color:#bfbfbf;
+ 	  font-family: "Times New Roman", Times, serif;
+ 	  margin-bottom:8px;
+ 	  font-size:18px;
+ 	  width:80%;
+ 	 }
+ 	 #typeRoom{
+  		padding: 0px 0px;
+  		 margin: 0px 0px;
+ 	 }
+ 	 #popust{
+ 	 	width: 40%;
+  		padding: 12px 12px;
+  		 margin: 8px 0px;
+ 	 }
+ 	 #katNaziv,#newPrice,#uslugaNaziv,#uslugaCijena,#ispisiSelect{
+ 	 	width: 40%;
+  		padding: 12px 20px;
+ 		 margin: 8px 0px;
+ 	 }
+ 	 #sobePopusti{
+ 		 padding:0px;
+ 		 margin-right: 5px;
+ 		 
+ 	 }
+ 	 
+ 	#dugmeAdminSelekt{
+ 	margin-left:65%;
+ 	margin-top: 5px;
+ 	margin-bottom: 10px;
+ 	}
+  
+ 	#booking{
+    background-color: #fff;
+    width: 50%;
+    padding: 10px 30px 40px 30px;
+    border-radius: 3px;
+   
+	}
+
+ #HotelDugme{
+  background-color: #404040 !important;
+	padding:6px;	
+	color: white;
+	font-weight: bold;
+  }
+ .booking-form {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    border-radius: 3px;
+     font-family: 'Josefin Sans', sans-serif;
+}
+
+  #monthChoose,#godinaIzbor{
+  	margin-left:20px;
+  }
+  #listaSoba,#porukaCSS{
+	    font-family: 'Josefin Sans', sans-serif;
+	  	margin-left:30px;
+  		font-size:16px;
+		margin-top:8px;	
+  }
+  #ocijenaHot{
+  		margin-top:5px;
+  		text-align:center;
+  		padding-top:3px;
+  		margin-left:30px;
+  		font-family: 'Josefin Sans', sans-serif;
+		font-size:16px;
+		color:rgba(214, 111, 239,1);
+		width:25%;
+		font-weight: bold;
+		border: 1px solid #C3C3C3;
+ 	 	border-radius: 5px;
+   
+  }
+  #fastDiv{
+ 		margin-top: 25px;
+  		margin-left:15px;
+  }
+.form-header,#korak4css,#obavj{
+	text-align: center;
+    margin-bottom: 20px;
+}
+ 	  input[type="date"]::before { 
+	content: attr(data-placeholder);
+	width: 100%;
+}
+
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { display: none }
+ .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+  </style>
+</head>
+<body onload="onLoad()" >
+<div class = "container-fluid">
+	<header>AirFinity</header>		
+	<article>
+		<div class="jumbotron">
+			<h2 id="naziv"> </h2>
+			<p> Surrounded by beautiful landscape and wonderful views, our hotel is the place where you can rest your eyes, hike, spend your holidays or  <br> have business conferences. 
+				 <br> Settle into a comfortable and spacious guest room or suite at our hotel,equipped with everything you need to relax.
+			</p>
+			<p>If you are on a business trip natural light in meeting rooms will help you to stay focus and productive. <br>We are waiting for you!
+			</p>
+		</div>
+	</article>
+	<div>
+	<div class= "row" >
+		<div class= "col-md-10" id = "lijevo">
+			
+			<div class="container" id="tabovi">
+				   <ul class="nav nav-tabs">
+				    <li class="active"><a id="info" >Information</a></li>
+				    <li><a id="rooms" >Rooms</a></li>
+				    <li><a id="reservation" >Reservations</a></li>
+				    <li><a id="price" >Pricelist</a></li>
+				  	<li><a id="config" >List of configurations</a></li>			  
+				  	<li><a id="admini" >Administrators</a></li>			  
+				  	<li><a id="sistemPopust">Discounts</a></li>			  
+				    <li><a id="business">Business report</a></li>
+				    <li><a id="fast">Fast reservations</a></li>
+				    
+				  </ul>
+			  </div>
+			 <div id="fastDiv" class="container-fluid">
+			 		 <div class="row" id = "formaFast">
+				   		
+			  		<div class="col-md-4">
+								<div class="form-group">
+											 <div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input id = "checkoutFast"  class="form-control" type="date" required="required"  data-placeholder="Check out">
+											</div>
+								</div>
+					</div>
+					<div class="col-md-3">
+									<div class="form-btn">
+									<button type="button" id="DugmeFast" class="btn  btn-lg" onclick = "izlistajFast()">Check availability</button>
+									</div>
+					</div>
+					</div>
+					<div id = "fastPonuda"></div>
+			 </div> 
+			  
+			  
+			 <div id="izvestaj" class="container-fluid">
+			  		<section >
+			  			<div id = "ocijenaHot"><p id="prosecnaOcijena">Average rating of hotel is: </p></div>
+							
+						</section>
+						
+					<p id = "listaSoba"> List of rooms: </p>
+						<div id="izvestajSoba">
+						</div>
+						<div id = "prihodi">
+							<div class="form-group row">
+							<div class="col-xs-3"><input id = "odPrihodi"  class="form-control" type="date" required="required" data-placeholder="Since when"></div>
+							<div class="col-xs-1"><button type="button" id="PrihodDugme" class="btn btn-light" onclick = "pronadjiPrihode()">Show income</button></div>	
+							<div class="col-xs-2" id = "divVrijednost"></div>
+							</div>
+						</div>
+						<div class="row" id="dailyChoose">
+								<h3 id="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at daily reservations
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Choose year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="godinaChart" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Choose month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="mjesecChart"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="dnevniDugme"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>	
+					
+						<canvas id="myChart">
+						</canvas>
+					
+					<div class="row" id="monthChoose">
+								<h3 id="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at weekly reservations
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Choose year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearChart" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Choose month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="monthChart"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="mjesecniDugme"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="weekChart">
+						</canvas>
+					
+						<div class="row" id="godinaIzbor">
+								<h3 id="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at weekly reservations
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Choose year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearGodisnji" placeholder="Choose year" >
+									</div>	   	  
+							   		
+							   		<div class="col-xs-2">
+							   			<button id="godisnjiDugme"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="mjesecniChart">
+						</canvas>
+					    
+			   </div> 
+			 <div id = "divPopust" class="container"> 
+			 	<section>
+			 	<div class="container" id="sobePopusti"></div>
+			 	<div class="container" id="postojeciPopusti"></div>
+			 	<div class="container" id = "poruka">
+			 		<p id = "porukaCSS">There is no any defined discount</p>
+			 	</div>
+			 	<div class="container" id="dodajPopust">
+			 		<div class = "row">
+				   		 	<div class="col-md-6">
+									<div class="form-group">
+										 <div class="input-group">
+										<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+										<input id = "sincewhen"  class="form-control" type="date" required="required" data-placeholder="Since when">
+										<span id="errorDatPopust"></span>
+						            	
+										</div>
+									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+											 <div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input id = "untilwhen"  class="form-control" type="date" required="required"  data-placeholder="Until when">
+												<span id="errorEndPopust"></span>
+						            	
+											</div>
+								</div>
+							</div>
+				     </div>
+				      <div class="row">
+				   		 
+						 <div class="col-md-6" >
+								<div class="form-group" id="labelaBroj">
+										<label for="points">Number of user points:</label>			
+						 		</div>													 		
+						 		<div class="form-group">
+										<div  id="ispisiSelectBodovi">	
+										<select class="form-control" id="selectBodove"></select>	
+										</div>					
+						
+						 		</div> 
+						</div> 			  	  
+				    	  <div class="col-md-6">
+						 		<div id="dugmePopust"></div>
+						 </div> 	  	  
+					
+			 		</div>
+			 		</div>			
+			 	</section>
+			 </div>
+			 <div id="adminStrana" class="container-fluid">
+			  		<section >
+			  			<div class="container" id="ispisiSelect">
+							<h3 id = "hAdmin">Add new administrator of hotel</h3>
+									<select class="form-control" id="adminSelect">
+									</select>	
+									<div>
+						  <button id="dugmeAdminSelekt"  class="btn btn-info" onclick="izmjeniAdmineHotela()" >Add</button>
+									</div>
+						</div>
+			  			 <div id ="adminDiv"></div>
+				    </section>
+			  </div>
+			 
+			 <div id="informacije" class="container-fluid">
+			  		<section >
+			  			<p id = "ocijenaHotela"></p>
+						<p id="opis"></p>
+						<p id="adresa"><i class="glyphicon glyphicon-home"></i>You can find us here </p>
+				    </section>
+			  </div>
+			 <div id = "promjenaLozinke">
+			 
+								 		<div class="container" id="pass">
+					  				<form method="post" class="changePassword" >  					
+									     <div class="form-group row">
+									        <div class="col-xs-6">	
+									            <i class="glyphicon glyphicon-eye-close"></i>
+									            <label for="pwd">Old password:</label>
+										        <input type="password"  required class="form-control" id="lozinkaOld" placeholder="Enter your password" name="loz1">
+										  	    <div id= "lozinkaError"></div>
+									        </div>
+									    </div>
+										<div class="form-group row">
+										      <div class="col-xs-6">
+											      <i class="glyphicon glyphicon-eye-close"></i>
+									              <label for="pwd">New password:</label>
+											      <input type="password" class="form-control" required id="lozinka1" placeholder="Enter new password" name="loz2">
+											      <div id='poruka'></div>	
+											  </div>			      
+									    </div>
+									    <div class="form-group row">
+										      <div class="col-xs-6">
+											      <i class="glyphicon glyphicon-eye-close"></i>
+									              <label for="pwd">Repeat new password:</label>
+											      <input type="password" class="form-control" required id="lozinka2" placeholder="Repeat password" name="loz2">
+											      <div id='poruka'></div>	
+											  </div>			      
+									    </div>  				    
+								    <button type="button" id="potvrdiBtn1" class="btn btn-default btn-lg">Confirm</button>
+								  </form>
+						</div>
+			 </div>
+			 <div id="rezervacije" class="container-fluid">
+				  <section >
+				<div id="korak"></div>
+				<div id = "korakDodatne"></div>
+				<div id = "reserveHotel">
+				<div class="container" >
+   				<div class="row">
+   				<div class="booking-form">
+   				<div class="form-header">
+   					<h1>Make your reservation</h1>
+   				</div>
+				   		<form>				   		
+				   		 <div class = "row">
+				   		 	<div class="col-md-6">
+									<div class="form-group">
+										 <div class="input-group">
+										<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+										<input id = "checkin"  class="form-control" type="date" required="required" data-placeholder="Check in">
+										<span id="errorPocetak"></span>
+									
+										</div>
+									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+											 <div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input id = "checkout"  class="form-control" type="date" required="required"  data-placeholder="Check out">
+												<span id="errorKraj"></span>
+								
+											</div>
+								</div>
+							</div>
+						 </div>
+				   		
+				 <div class="row">
+				   		  <div class="col-md-6">
+								<div class="form-group">
+									 <div class="input-group">	
+							   		<span class="input-group-addon"> <i class="glyphicon glyphicon-bed"></i></span>
+									<input class="form-control" id = "brojSoba"  type="number" min="1" required="required" placeholder="Rooms">		
+									<span id="errorSobe"></span>
+								
+									</div>
+								</div>					
+						 </div>
+						 <div class = "col-md-6">
+						  		<div class="col-md-8">
+						  				<span class="form-label">Type of rooms( number of beds )</span>
+								</div>					
+						 		<div class="col-md-4">
+									<div class="form-group">
+												<div class="input-group">
+													<select class="form-control" id="typeRoom">
+													</select>	
+												</div>
+									</div>				
+							 	</div>
+						 
+						 </div>
+						 	  
+				 </div>
+						 <div class="row">
+				   		
+						 <div class="col-md-6">
+								<div class="form-group">
+								 <div class="input-group">	
+								    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input class="form-control" min="1" id = "brojLjudi"  type="number" min="1" required="required" placeholder="Guests">
+							   		<span id="errorLjudi"></span>
+								
+							   </div></div>
+						 </div>
+						 <div class="col-md-6">
+									<div class="form-btn">
+									<button type="button" id="HotelDugme" class="btn  btn-lg" onclick = "izlistajPonudu()">Check availability</button>
+									</div>
+						 </div>
+						</div>
+				   	 		</form>
+				   	</div>
+				   	</div>
+				 </div>
+					
+				</div>
+									</section>
+	</div> 
+			 <div id="sobe" class="container-fluid">			  		
+			 </div>
+			 
+			  <div id="cijene" class="container-fluid">	
+						<div id="cijeneDodatne">
+						</div>	 
+					<p id="datCijene"></p>
+			  </div>
+			  <div id="konfig" class="container-fluid">
+			  </div> 
+			<div id = "ispisiTabelu">
+			</div>
+			<div id = "izmjena"></div>
+			</div>
+		
+		<aside class="col-md-2">
+			<div class="okvir" id = "admin">
+				<button onclick = "addRoom()" type="button" class="btn btn-link">Add room</button>
+			</div>
+			<div class="okvir" id = "adminKat" >
+				<button onclick = "addConfiguration()" type="button" class="btn btn-link">Add configuration</button>
+			</div>
+			
+			<div class="okvir" id = "adminAdditional">
+				<button onclick = "addUsluga()" type="button" class="btn btn-link">Add additional services</button>
+			</div>
+			<div class="okvir" id = "adminDisc">
+				<button onclick = "addPopust()" type="button" class="btn btn-link">Add discount</button>
+			</div>
+			<div class="okvir" id = "adminPersonal">
+				<button onclick = "changeData()" type="button" class="btn btn-link">Change personal data</button>
+			</div>
+			<div class="okvir" id = "adminPass" >
+				<button onclick = "changePass()" type="button" class="btn btn-link">Change password</button>
+			</div>
+			
+		</aside>
+	</div>
+	</div>
+</div>
+</body>
+</html>

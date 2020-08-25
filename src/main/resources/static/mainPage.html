@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Airflight</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript"  src="/js/mainPage.js"></script>
+  
+  <style>
+  nav {
+  	height:60px;
+  	background-color:#fff;
+  }
+  .jumbotron {
+      color: #fff;
+      padding: 220px 25px;	
+    }
+  #pozadinaAuto{
+    background-image: url(img/rentcar.jpg);  
+	  background-size: cover;      
+  
+  }
+  #divBodPopust{
+  	width:60%;
+  }
+  #pozadinaHotel{
+    background-image: url(img/hotelDiv.jpg);  
+	background-size: cover;      
+  }
+  #pozadinaAvion{
+    background-image: url(img/airplane2.jpg);  
+	background-size: cover;      
+  	color:#fff;
+  } 
+  
+  
+#booking{
+    background-color: #fff;
+    width: 50%;
+    padding: 10px 30px 40px 30px;
+    border-radius: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.form-header,#nemaPonuda{
+	text-align: center;
+    margin-bottom: 20px;
+}
+#searchRent{
+	background-color: #2f2f2f !important;
+	color: white;
+	font-weight: bold;
+}
+  #HotelDugme,#flightDugme{
+  background-color: #404040 !important;
+	padding:6px;	
+	color: white;
+	font-weight: bold;
+  }
+  .container-fluid {
+      padding: 0px 0px;
+      margin-left:0px;      
+      margin-right:0px;
+    background-color:#fff ;
+  	
+  }
+  .Ikonice {
+   	font-size:20px;
+ 
+  }
+  
+  .booking-form {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    border-radius: 3px;
+}
+ 
+  
+ .btn-group btn-group-lg{
+ 	 background-color:#fff !important;
+  	
+ }
+ #listanav{
+	margin-right:0px !important;
+ 	padding-right: 0px !important;
+ }
+ #logoMargin{
+ 	margin-left:10px;
+ }
+ #dugmeAdminSelekt{
+ 	margin-left:40%;
+ 	margin-top: 5px;
+ 	margin-bottom: 10px;
+ }
+  #ispisiSelect{
+ 	 	width: 40%;		
+ 	 }
+ 	#dugmeBodPopust{
+ 		margin-left:650px;
+ 		margin-bottom:5px;
+ 	} 
+ input[type=number]{
+    width: 40px;
+  } 
+ 	 #jumb{
+ 	 background-color: #d6d6d6;
+ 	 	padding:90px 25px !important;
+ 	 }
+ 	 #historyRent, #historyAirplane, #historyHotel,#ratingRooms, #friendsList{
+ 	 	padding:10px;
+ 	    border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 
+ 	 }
+ 	 #ratingRooms{
+ 	 	padding: 0px;
+ 	 	margins: 0px;
+ 	 }
+ input[type="date"]::before { 
+	content: attr(data-placeholder);
+	width: 100%;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { display: none }
+ .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+  </style>
+</head>
+<body onload="onLoad()">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+          <span id = "logoMargin"><img src="\img\logo1.png" alt="AirFinity" ></span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right" id="listanav">
+        
+        <li onclick="planeShow()" class="Ikonice"><a href="#about"><span class="glyphicon glyphicon-plane"></span>
+  Flights</a></li>
+        <li onclick="hotelShow()" class="Ikonice"><a href="#services"><span class="glyphicon glyphicon-bed"></span>
+  Hotels</a></li>
+        <li class="Ikonice" onclick="carShow()"><a href="#portfolio"><span class="glyphicon glyphicon-road"></span>Car hire</a></li>
+        <li class="Ikonice" id="logovanje"><a href="login.html"> Log in <span class="glyphicon glyphicon-log-in"></span></a></li>
+        <li class="Ikonice" id="prikazKorisnika"><a href="profileUser.html"><span class="glyphicon glyphicon-user"></span><span id="imeKorisnika"></span></a></li>
+        <li class="Ikonice" id="odjava"><a href="mainPage.html">Log out <span class="glyphicon glyphicon-log-out"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-left" id = "pozadinaAvion" >
+  <h1>Airflights</h1> 
+  <p>Travel is the only thing you buy that makes you rich.</p>
+  
+  <p>So let's fly together!</p> 
+  </div>
+  <div id = "reserveFlight">
+	<div class="container" >
+   	<div class="row">
+   	<div class="booking-form">
+   		<div class="form-header">
+   			<h1>Find flight</h1>
+   		</div>
+   		<form>
+   			<div class="row">
+						<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" id = "startDestination" type="text" required placeholder="Enter Start Destination">
+											<span id="errorDestination"></span>
+									</div>
+						</div>
+						<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" id = "endDestination" type="text" required placeholder="Enter End Destination">
+											<span id="errorEndDestination"></span>
+									</div>
+						</div>
+   			</div>
+   			<div class="row">
+						<div class="col-md-4">
+									<div class="form-group">
+										<input class="form-control" id = "brojOsoba" type="text"  placeholder="Enter number of persons" min="0">
+											<span id="errorBrojOsoba"></span>
+									</div>
+						</div>
+						<div class="col-md-4">
+									<div class="form-group">
+										<select class="form-control" id="selectType">
+											<option value = "one-way">One-way</option>
+									      	<option value = "round-trip">Round-trip</option>
+									      	<option value = "multi-city">Multi-city</option>  
+									      	<option value = "all">All</option>
+										</select>
+									</div>
+						</div>
+						<div class="col-md-4">
+									<div class="form-group">
+										<select class="form-control" id="selectClass">
+											<option value = "biznis">Business</option>
+									      	<option value = "ekonomska">Economic</option>
+									      	<option value = "first">First</option>  
+									      	<option value = "mixed">All</option>
+										</select>
+									</div>
+						</div>
+   			</div>
+   		 <div class = "row">
+   		 	<div class="col-md-6">
+					<div class="form-group">
+						 <div class="input-group">
+						<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+						<input class="form-control" type="date" id = "datumPoletanja" required="required" data-placeholder="Depart date">
+								<span id="errorDatePoletanja"></span>
+									
+						</div>
+					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+							 <div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input class="form-control" type="date" id = "datumPovratka" required="required"  data-placeholder="Return date">
+										<span id="errorDatePovratka"></span>
+							</div>
+				</div>
+			</div>
+		</div>
+			
+   		 <div class = "row">
+			<div class="col-md-12">
+					<div class="form-btn">
+					<button type="button" id="flightDugme"  onclick="findFlights()" class="btn  btn-lg">Check flights</button>
+					</div>
+		    </div>
+		 </div>
+   	
+   	 </form>
+   	</div>
+   	</div>
+ </div>
+	
+</div>
+
+<div id="pretragaDiv">
+	<div class="container" >
+		<div class="row">
+			<div class = "col-md-3">	
+				<div class="row"><span class="label label-info">Company:</span></div>
+				<div class="row"><select class="form-control filteri" id="selectKompanijaFilter"></select></div>
+				<div class="row"><span class="label label-info">Price:</span></div>
+				<div class="row"><input type="range" class="custom-range filteri" id="rangePrice"></div>
+				<div class="row"><span class="label label-info">Duration:</span></div>
+				<div class="row"><input type="range" class="custom-range filteri" id="rangeDuration"></div>
+				
+			
+				<div class="row"><span class="label label-info">Class:</span></div>
+				<div class="row">
+					<select class="form-control filteri" id="selectKlasaFilter">
+						<option value = "biznis">Business</option>
+				      	<option value = "ekonomska">Economivc</option>
+				      	<option value = "first">First</option>  
+				      	<option value = "mixed">All</option>
+					</select>
+				</div>
+			</div>
+			<div class = "col-md-8">
+				<div id="pretragaLetova">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+  
+
+<div class="jumbotron text-left" id="pozadinaAuto">
+  <h1>Rent-a-car</h1> 
+  <h3>We are waiting for you.</h3> 
+ </div>
+
+<div class="jumbotron text-left" id="pozadinaHotel">
+  <h1>Hotels</h1> 
+  <h3>Stay with us, and feel like home…</h3> 
+ </div>
+ <div id = "reserveHotel">
+	<div class="container" >
+   	<div class="row">
+   	<div class="booking-form">
+   		<div class="form-header">
+   			<h1>Find hotel</h1>
+   		</div>
+   		<form>
+   			<div class="row">
+						<div class="col-md-12">
+									<div class="form-group">
+										<input class="form-control" id = "nameHotel" type="text" required placeholder="Enter hotel or destination name">
+											<span id="errorName"></span>
+									</div>
+						</div>
+   			</div>
+   		 <div class = "row">
+   		 	<div class="col-md-6">
+					<div class="form-group">
+						 <div class="input-group">
+						<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+						<input class="form-control" type="date" id = "hotelCheckIn" required="required" data-placeholder="Check in">
+								<span id="errorPocetak"></span>
+									
+						</div>
+					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+							 <div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input class="form-control" type="date" id = "hotelCheckOut" required="required"  data-placeholder="Check out">
+										<span id="errorKraj"></span>
+							</div>
+				</div>
+			</div>
+		</div>
+			
+   		 <div class = "row">
+			<div class="col-md-12">
+					<div class="form-btn">
+					<button type="button" id="HotelDugme" onclick="findHotels()" class="btn  btn-lg">Check availability</button>
+					</div>
+		    </div>
+		 </div>
+   	
+   	 </form>
+   	</div>
+   	</div>
+ </div>
+	
+</div>
+ 
+<div id="reserveCar">
+	<div class="container" id="booking">
+		<div class="row">
+				<div class="form-header">
+					<h1>Find rent-a-car service</h1>
+				</div>
+				<form>
+					<div class="form-group">
+								<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+											<input id = "nameRent"  class="form-control" type="text" required="required"  placeholder="Enter city or name of rent-a-car">
+											<span id="errorName"></span>
+								</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<input class="form-control" id="pocetak" type="date" data-toggle="tooltip" data-placement="top" title="Date when you want to pick up vehicle" data-placeholder="Choose pick-up date" required>
+											<span id="errorPocetak"></span>
+										</div>
+									</div>
+						</div>
+						<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<input class="form-control" type="date" id="kraj" data-placeholder="Choose drop-off date" data-toggle="tooltip" data-placement="top" title="Date when you want to return vehicle" required>
+											<span id="errorKraj"></span>
+										</div>
+									</div>
+						</div>
+					</div>
+					<button type="button" id="searchRent" onclick="findRent()" class="btn  btn-lg">Search cars</button>
+					</form>
+		</div>
+	</div>
+</div>
+<div id="sortHotele">
+<div class="row">
+		<div class="col-md-9">
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+						<span class="form-label">Sort by</span>
+						<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-sort"></i></span>
+										<select class="form-control" id="sortHotel" onchange="sortirajHotele()">
+									       <option hidden disabled selected value="none"> </option>
+									          <option value="NameA">Name [A-Z]</option>
+										      <option value="NameD">Name [Z-A]</option>
+										      <option value="CityA">City [A-Z]</option>
+										      <option value="CityD">City [Z-A]</option>
+										</select>
+						</div>
+			</div>
+		</div>	
+		<div class="col-md-1">
+		</div>			
+</div>
+</div>
+<div id="sortCar">
+<div class="row">
+		<div class="col-md-9">
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+						<span class="form-label">Sort by</span>
+						<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-sort"></i></span>
+										<select class="form-control" id="sortAuto" onchange="sortirajRent()">
+									       <option hidden disabled selected value="none"> </option>
+									          <option value="NameA">Name [A-Z]</option>
+										      <option value="NameD">Name [Z-A]</option>
+										      <option value="CityA">City [A-Z]</option>
+										      <option value="CityD">City [Z-A]</option>
+										</select>
+						</div>
+			</div>
+		</div>	
+		<div class="col-md-1">
+		</div>			
+</div>
+</div>
+<div id="sortAvione">
+<div class="row">
+		<div class="col-md-9">
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+						<span class="form-label">Sort by</span>
+						<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-sort"></i></span>
+										<select class="form-control" id="sortPlane" onchange="sortirajAvione()">
+									       <option hidden disabled selected value="none"> </option>
+									          <option value="NameA">Name [A-Z]</option>
+										      <option value="NameD">Name [Z-A]</option>
+										      <option value="CityA">City [A-Z]</option>
+										      <option value="CityD">City [Z-A]</option>
+										</select>
+						</div>
+			</div>
+		</div>	
+		<div class="col-md-1">
+		</div>			
+</div>
+</div>
+<div class="container" id="ispisiSelect">
+	<h3>Add new administrator of system</h3>
+	<select class="form-control" id="adminSelect">
+	</select>	
+	<div><button id="dugmeAdminSelekt"  class="btn btn-info" onclick="izmjeniAdmineSistema()" >Add</button></div>
+</div>
+<div  class="container fluid" id ="divBodPopust">
+	<h3>Add new special discount</h3>
+	 <form method="post" class="bodpopust" id="bodpopust" >	
+	
+	 <div class="row">
+	 	
+				   		  <div class="col-md-6">
+								<div class="form-group">
+									 <div class="input-group">	
+								   		<span class="input-group-addon"> <i class="glyphicon glyphicon-pencil"></i></span>
+										<input class="form-control" id = "brojBodova"  type="number" min="1" required="required" placeholder="Number of user points">		
+										    <span id="errorBodovi"></span>	
+									</div>
+								</div>					
+						 </div>
+						  <div class="col-md-6">
+								<div class="form-group">
+									 <div class="input-group">	
+								   		<span class="input-group-addon"> <i class="glyphicon glyphicon-pencil"></i></span>
+										<input class="form-control" id = "procenat"  type="number" min="1" required="required" placeholder="Discount percentage">		
+											<span id="errorPopust"></span>
+									</div>
+								</div>					
+						 </div> 	  	  
+		</div>
+		 <button id = "dugmeBodPopust" type="submit" class="btn btn-light"  >Add</button>
+		</form>							    
+</div>
+<div class="container" id = "ispisiTabelu">
+	
+</div>
+<div id="history">
+	<div id="jumb" class="jumbotron text-center" >
+ 		 <h2>You can see here the history of your reservations.</h2> 
+ 	</div>
+	<div class="container" id="historyAirplane">
+	</div>
+	<div class="container" id="historyHotel">	
+	</div>	
+	<div class="container" id="ratingRooms">
+	</div>
+	<div class="container" id="historyRent">
+	</div>
+</div>
+<div class="container" id = "friendsList">
+  <a href="profileUser.html">See list of friends</a>
+</div>
+<div>
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>
+  	<div class="btn-group btn-group-lg" id = "zaAdminaSistema" role="group" aria-label="Basic example">
+  	<button type="button" class="btn btn-secondary" onclick = "addPlane()">Add plane</button>
+  	<button type="button" class="btn btn-secondary" onclick = "addHotel()">Add hotel</button>
+  	<button type="button" class="btn btn-secondary" onclick = "addCarHire()">Add car-hire</button>
+  	<button type="button" class="btn btn-secondary" onclick = "adminSistem()">Administrators</button>
+    <button type="button" class="btn btn-secondary" onclick = "bonusPopust()">Special discounts</button>
+  
+   </div>
+  <p>Copyrights Made By <a href="http://localhost:8080/mainPage.html">Airfinity</a></p> 
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Company profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <script type="text/javascript"  src="/js/profilCompany.js"></script>
+
+  <style>
+  	header{
+			background-color: white;
+   			font-size: 36px;
+   			font-weight: bold;
+ 		 	font-family: "Comic Sans MS", cursive, serif;
+		    border-bottom: 2px solid #C3C3C3;
+		    padding: 4px;
+ 	}
+ 	
+ 	 .jumbotron{
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding-left: 15px;
+ 	 }
+ 	 .okvir{
+ 	    border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding : 5px;
+ 	 	text-color:#bfbfbf !important;
+ 	 	margin-top:2px;
+ 	 }
+ 	 
+ 	 .okvir:hover{
+ 	 	background-color: #C3C3C3;
+ 	 }
+ 	 .col-md-2{
+ 	 	text-color:#bfbfbf;
+ 	 	text-align: center;
+ 	 	margin-top:2px;
+ 	 }
+ 	 .row{
+ 	 padding-right: 13px;
+ 	 }
+ 	 .container{
+ 	 	margin-left:5px;
+ 	 	margin-top:1px;
+ 	 }
+ 	 h3{
+ 	  margin-left:25px;
+ 	 	text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		 margin-bottom:0px;
+ 	 }
+ 	 button[type = submit],#buttonID{
+ 	 	margin-left:30%;
+ 	 	margin-top: 5px;
+ 	 	
+ 	 }
+ 	 #hAdmin,#h2Ad{
+ 		margin-left:25px;
+ 	 	text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		 margin-bottom:8px;
+ 	 
+ 	 }
+ 	 #dodatne{
+ 	 	width: 40%;
+  		
+ 	 }
+ 	 #buttonID{
+ 	 	margin-left:15px;
+ 	 }
+ 	 #dugmePopust{
+ 	 		margin-left:300px;
+ 			padding:3px;
+ 	 		margin-top:2px;
+ 	 		margin-bottom:3px;
+ 	 }
+ 	 #typeRoom{
+  		padding: 0px 0px;
+  		 margin: 0px 0;
+ 	 }
+ 	 #popust{
+ 	 	width: 40%;
+  		padding: 12px 12px;
+  		 margin: 8px 0;
+ 	 }
+ 	 #katNaziv,#newPrice,#uslugaNaziv,#uslugaCijena,#ispisiSelect{
+ 	 	width: 40%;
+  		padding: 12px 20px;
+ 		 margin: 8px 0;
+ 	 }
+ 	 
+ 	#dugmeAdminSelekt{
+ 	margin-left:65%;
+ 	margin-top: 5px;
+ 	margin-bottom: 10px;
+ 	}
+  
+ 	#booking{
+    background-color: #fff;
+    width: 50%;
+    padding: 10px 30px 40px 30px;
+    border-radius: 3px;
+   
+	}
+
+	 #HotelDugme{
+	  background-color: #404040 !important;
+		padding:6px;	
+		color: white;
+		font-weight: bold;
+	  }
+	 .booking-form {
+	    max-width: 768px;
+	    width: 100%;
+	    margin: auto;
+	    padding: 30px;
+	    border-radius: 3px;
+	     font-family: 'Josefin Sans', sans-serif;
+	}
+	  
+	  
+	.form-header,#korak4css,#obavj{
+		text-align: center;
+	    margin-bottom: 20px;
+	}
+	 	  input[type="date"]::before { 
+		content: attr(data-placeholder);
+		width: 100%;
+	}
+	input[type="date"]:focus::before,
+	input[type="date"]:valid::before { display: none }
+	 .bg-4 { 
+	    background-color: #2f2f2f;
+	    color: #ffffff;
+	}
+	
+	.table
+	{
+		width : 100% !important;
+		font-size: 12px;
+		max-width: 100% !important;
+	}
+	
+  </style>
+</head>
+
+<body onload="onLoad()">
+	<div class = "container-fluid">
+		<header>AirFinity</header>	
+		<article>
+			<div class="jumbotron">
+				<h2 id="naziv"> </h2>
+				<p> Surrounded by beautiful landscape and wonderful views, our hotel is the place where you can rest your eyes, hike, spend your holidays or  <br> have business conferences. 
+					 <br> Settle into a comfortable and spacious guest room or suite at our hotel,equipped with everything you need to relax.
+				</p>
+				<p>If you are on a business trip natural light in meeting rooms will help you to stay focus and productive. <br>We are waiting for you!
+				</p>
+			</div>
+		</article>
+		<div>
+			<div class="row">
+				<div class= "col-md-10" id = "levo">
+					<div class="container-fluid" id="tabovi">
+					   <ul class="nav nav-tabs">
+					   		<li class="active"><a id="info" onclick="info()">Information</a></li>
+						    <li><a id="planes" onclick="showPlanes()">Planes</a></li>
+						    <li><a id="flights" onclick="showFlights()">Flights</a></li>
+						    <li><a id="fastTickets" onclick="showFastTickets()">Fast tickets</a></li>	
+						    <li><a id="discount" onclick="discount()">Discounts</a></li>	
+						    <li><a id="report" onclick="report()">Business report</a></li>	  
+						  	<li><a id="admini" onclick="showAdministrators()" >Administrators</a></li>	
+						  	<li><a id="cenovnik" onclick="priceList()">Pricelist</a></li>			  
+					  </ul>
+			  		</div>
+			  		
+			  		<div id="informacije" class="container-fluid">
+			  			<section>
+							<p id="opis"></p>
+							<p id="adresa"><i class="glyphicon glyphicon-home"></i>You can find us here </p>
+				   		</section>
+			 		</div>	
+			  		
+			  		<!-- potrebna mi je dorada -->
+			  		<div id="adminStrana" class="container-fluid">
+			  			<section>
+				  			<div class="container" id="ispisiSelect">
+								<h3 id = "CompanyAdmin">Add new administrator of company</h3>
+										<select class="form-control" id="adminSelect">
+											</select>	
+										<div>
+							  	<button id="dugmeAdminSelekt" onclick="izmjeniAdmineSistema()" class="btn btn-info">Add</button>
+										</div>
+							</div>
+				  			 <div id ="adminDiv"></div>
+					    </section>
+			 	 	</div>
+			  		
+			  		<div id="flightsStrana" class="container-fluid">
+			  			<div class="panel panel-primary filterableFlights"  style="width:75%;">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">Letovi</h3>
+				                <div class="pull-right">
+				                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+				                </div>
+				            </div>
+				            <table class="table table-filtered" >
+				                <thead>
+				                    <tr class="filters">
+				                        <th><input type="text" class="form-control" placeholder="FROM" disabled></th>
+						                <th><input type="text" class="form-control" placeholder="TO" disabled></th>
+						                 <th><input type="text" class="form-control" placeholder="Date departing" disabled></th>
+						                <th><input type="text" class="form-control" placeholder="Date landing" disabled></th>
+						                <th><input type="text" class="form-control" placeholder="Plane" disabled></th>
+						                <th><input type="text" class="form-control" placeholder="Presedanja" disabled></th>
+						                <th><input type="text" class="form-control" placeholder="Duzina" disabled></th>
+				                    </tr>
+				                </thead>
+				    			<tbody id="tabelaLetovi">
+				    			
+								</tbody >
+				            </table>
+					      </div>	
+			  		</div>
+			  		
+			  		<div id="planesStrana">
+			  		</div>	
+			  		
+			  		
+			  		
+			  		<!-- JOS IMAM OVU TABELU DA DORADIM STA MI FALI -->
+			  		<div id="fastTicketsStrana" class="container-fluid">
+			  				
+				  			<div class="panel panel-primary filterableTicketFast"  style="width:75%;">
+					            <div class="panel-heading">
+					                <h3 class="panel-title">Brze karte</h3>
+					                <div class="pull-right">
+					                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+					                </div>
+					            </div>
+					            <table class="table table-filtered" >
+					                <thead>
+					                    <tr class="filters">
+					                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="FROM/TO" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Date" disabled></th>
+					                         <th><input type="text" class="form-control" placeholder="Seat" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Class" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Price" disabled></th>
+					                   		<th><input type="text" class="form-control" placeholder="Popust" disabled></th>
+					                    </tr>
+					                </thead>
+					    			<tbody id="tabelaBrzeKarte">
+					    			
+									</tbody >
+					            </table>
+						      </div>
+			  		
+			  		
+			  		</div>	
+			  		
+			  		<div id="priceListStrana">
+			  			<div class="panel panel-primary filterableServices"  style="width:75%;">
+					            <div class="panel-heading">
+					                <h3 class="panel-title">Brze karte</h3>
+					                <div class="pull-right">
+					                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+					                </div>
+					            </div>
+					            <table class="table table-filtered" >
+					                <thead>
+					                    <tr class="filters">
+						                     <th><input type="text" class="form-control" placeholder="Naziv" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Cena" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Klasa" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Opis" disabled></th>
+					                    </tr>
+					                </thead>
+					    			<tbody id="tabelaServices">
+					    			
+									</tbody>
+					            </table>
+						      </div>
+			  		
+			  		
+			  		</div>	
+			  		
+			  		<div id="flightsSearchStrana">
+			  		</div>	
+			  		
+			  		<div id="discountStrana" class="container-fluid">
+			  			
+			  			
+				  			<div class="panel panel-primary filterableTicket"  style="width:75%;">
+					            <div class="panel-heading">
+					                <h3 class="panel-title">Discount</h3>
+					                <div class="pull-right">
+					                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+					                </div>
+					            </div>
+					            <table class="table table-filtered" >
+					                <thead>
+					                    <tr class="filters">
+					                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="FROM/TO" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Date" disabled></th>
+					                         <th><input type="text" class="form-control" placeholder="Seat" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Class" disabled></th>
+					                        <th><input type="text" class="form-control" placeholder="Price" disabled></th>
+					                    </tr>
+					                </thead>
+					    			<tbody id="tabelaKarte">
+					    			
+									</tbody >
+					            </table>
+						      </div>
+					      
+			  		</div>
+			  		
+			  <div id = "divPopust" class="container"> 
+			 	<section>
+			 	<div class="container" id="KartePopusti"></div>
+			 	<div class="container" id="postojeciPopusti"></div>
+			 	<div class="container" id = "poruka">
+			 		<p id = "porukaCSS">There is no any defined discount</p>
+			 	</div>
+			 	<div class="container" id="dodajPopust">
+				      <div class="row">
+				   		 
+						 <div class="col-md-4" >
+								<div class="form-group" id="labelaBroj">
+										<label for="points">Number of user points:</label>			
+						 		</div>													 		
+						 		<div class="form-group">
+										<div  id="ispisiSelectBodovi">	
+										<select class="form-control" id="selectBodove"></select>	
+										</div>					
+						
+						 		</div> 
+						</div> 			  	  
+				    	 
+			 		</div>
+			 		<div class = "row">
+			 		 <div class="col-md-2">
+						 		<div id="dugmePopust"><button id="btnPopust" type="button" class="btn btn-primary">Add</button></div>
+						 </div> 	  	  
+					
+			 		</div>
+			 		</div>			
+			 	</section>
+			 </div>
+			  		
+			  		
+			  	   <div id="izvestaj" class="container-fluid">
+			  		<section >
+						<p id="prosecnaOcena">Average rating of our company  is  </p>
+						</section>
+					<p>List of our planes </p>
+						<div id="izvestajAvioni">
+						</div>
+							<div class="row" >
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-folder-open"></i> </span>See income of the company: 
+								</h3>
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label class="form-label">Since:</label>
+									</div>
+							   		<div class="col-xs-4" id="income">
+									   		<div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+												<input class="form-control" id="incomeDate" type="date" data-placeholder="Choose the begining of period" data-toggle="tooltip" data-placement="top" title="Date since when you want to calculate income" >
+												<span id="errorIncome"></span>
+											</div>
+									</div>
+									<div class="col-xs-2">
+							   			<button id="seeIncome"  class="btn btn-info" >Calculate</button>
+									</div>
+							   		<div class="col-xs-4" id="incomeResult">
+									</div>
+							    </div>
+						    			 
+						</div>
+						<div class="row" id="dayChoose">
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at number of reserved tickets per day
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearCh2" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="monthCh2"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="showGraf1"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="dayChart">
+						</canvas>
+						<div class="row" id="monthChoose">
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at weekly reservations of tickets
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearChart" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="monthChart"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="showGraf"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="weekChart">
+						</canvas>
+						<div class="row" >
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Monthly reservations tickets:
+								</h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearCh" placeholder="Enter year" >
+									</div>
+									<div class="col-xs-2">
+							   			<button id="showGraf2"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="monthGrafik">
+						</canvas>
+						
+			   </div>
+			 <div id = "divLozinka">
+			 <div class="container" id="pass">
+			  				<form method="post" class="changePassword" >  					
+							     <div class="form-group row">
+							        <div class="col-xs-6">	
+							            <i class="glyphicon glyphicon-eye-close"></i>
+							            <label for="pwd">Old password:</label>
+								        <input type="password"  required class="form-control" id="lozinkaOld" placeholder="Enter your password" name="loz1">
+								  	    <div id= "lozinkaError"></div>
+							        </div>
+							    </div>
+								<div class="form-group row">
+								      <div class="col-xs-6">
+									      <i class="glyphicon glyphicon-eye-close"></i>
+							              <label for="pwd">New password:</label>
+									      <input type="password" class="form-control" required id="lozinka1" placeholder="Enter new password" name="loz2">
+									      <div id='poruka'></div>	
+									  </div>			      
+							    </div>
+							    <div class="form-group row">
+								      <div class="col-xs-6">
+									      <i class="glyphicon glyphicon-eye-close"></i>
+							              <label for="pwd">Repeat new password:</label>
+									      <input type="password" class="form-control" required id="lozinka2" placeholder="Repeat password" name="loz2">
+									      <div id='poruka'></div>	
+									  </div>			      
+							    </div>  				    
+						    <button type="submit" id="potvrdiBtn1" class="btn btn-default btn-lg">Confirm</button>
+						  </form>
+				</div>
+			 </div>	
+			 
+			 
+			  	
+			  				  			  		
+				</div>
+				<aside  class="col-md-2 side">
+					<div class="okvir" id ="admin">
+						<button onclick = "addPlane()" type="button" class="btn btn-link">Add plane</button>
+					</div>
+					<div class="okvir" id = "adminLet" >
+						<button  type="button" class="btn btn-link" onclick="addFlight()">Add flight</button>
+					</div>
+					<div class="okvir" id = "adminDestinacija">
+						<button  type="button" class="btn btn-link" onclick="addDestination()">Add destination</button>
+					</div>
+					<div class="okvir" id = "adminDestinacija">
+						<button  type="button" class="btn btn-link" onclick="changePassword()">Change password</button>
+					</div>
+					<div class="okvir" id = "adminDestinacija">
+						<button  type="button" class="btn btn-link" onclick="changePersonalData()">Change personal data</button>
+					</div>
+							
+				</aside>
+			</div>
+		</div>
+	</div>
+</body >
+
+
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/profileCar.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script  src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> <title>Profile</title>
+<style>
+	
+	header{
+			background-color: white;
+   			font-size: 36px;
+   			font-weight: bold;
+ 		 	font-family: "Comic Sans MS", cursive, serif;
+		    border-bottom: 2px solid #C3C3C3;
+		    padding: 4px;
+ 	}
+ 	#headquarter{
+ 		padding-bottom: 10px;
+ 	}
+ 	.look, #incomeResult{
+ 		padding:5px;
+ 		font-weight: bold;
+ 		font-family: "Comic Sans MS", serif;
+		    
+ 	}
+ 	#incomeResult{
+ 		font-size: 16px;
+ 	}
+	body{
+			background-color: #EFEFEF;
+			color: #666;
+  		    font-family: 'Lato', sans-serif;    
+  		    font-size: 16px;
+ 	 }
+ 	   
+	#booking{
+	    background-color: #fff;
+	    width: 75%;
+	    padding: 10px 30px 40px 30px;
+	    border-radius: 3px;
+	    font-family: 'Josefin Sans', sans-serif;
+	}
+	.form-header{
+		text-align: center;
+	    margin-bottom: 20px;
+	}
+ 	 section{
+ 	 	background-color: white;
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding: 10px;
+ 	 }
+ 	 aside{
+ 	 	background-color: white;
+ 	 	border-radius: 5px;
+ 	 	padding: 0px !important;
+ 	 
+ 	 }
+ 	 .side{
+ 		 padding: 10px 12px;
+ 		 margin:0px;
+ 		 font-size:20px;
+		 cursor:pointer;
+		 border: 2px solid #C3C3C3;
+ 	 	 border-radius: 5px;
+    }
+    .side:hover{
+    	background-color: #C3C3C3;
+    }
+ 	 #prviJumbo{
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	padding-top:2px;
+ 	 	padding-bottom:0px;
+ 	 	padding-left: 15px;
+ 	 	margin-bottom: 0px;
+ 	 }
+ 	 #sadrzaj{
+ 	 	margin: 0px !important;
+ 	 	padding: 0px !important;
+ 	 }
+ 	 article{
+ 	 	padding: 0px !important;
+ 	 }
+ 	 .row{
+ 	 	padding-left:12px;
+ 	 	padding-right:12px;
+ 	 }
+ 	 .polje{
+ 	 	background-color: white;
+ 	 	padding:5px;
+ 	 	width:70%;
+     	border: 2px solid #C3C3C3;
+ 
+ 	 }
+ 	 #prikazCenovnika{
+ 	 	background-color: white;
+ 	 	padding:5px;
+ 	 	margin-left:5px;
+ 	 }
+ 	 #cenovnik, #bg{
+ 	 	margin-left:0px;
+ 	 	margin-right:0px;
+ 	 	background-color: white;
+ 	 	border: 2px solid #C3C3C3;
+ 	 	border-radius: 5px;
+ 	 	
+ 	 }
+ 	 #labPoeni, #fg{
+ 	 margin-bottom:2px;
+ 	}
+ 	#dugmePopust{
+ 		margin-top:5px;
+ 		
+ 	}
+  #prviJumbo p{
+  	margin:0px;
+  }
+  table tr{
+   	 	border-bottom: 2px solid #C3C3C3;
+  
+  }
+  table td{
+  	padding:8px;
+  }
+  #pozTabovi{
+  		background-color:white;
+  		margin-left: 0px;
+  		padding-left: 0px;
+  		font-size: 20px; 
+  	}
+  	#informacije , #automobili, #cenovnik,#izvestaj, #divFast, #adminStrana{
+  		padding-left: 0px;
+  		padding-right: 0px;
+  	}
+  	#divlozinka{
+  		background-color: white !important;
+ 	 	border: 2px solid #C3C3C3 !important;
+ 	 	border-radius: 5px !important;
+ 	 	padding: 10px !important;
+  	}
+  	#divPopust{
+  		padding-left: 0px !important;
+  		padding-right: 0px !important;
+  	
+  	}
+  	#izvestaj{
+  		background-color : white;
+  	}
+  	#add{
+  		margin-left:20%;
+  		margin-right:20%;
+  	}
+  	.registracija{
+  		padding-left:20%;
+  	}
+  	.floatC{
+  		float: left;
+  		width: 40%;
+  		margin-left:15px;
+  		margin-right:15px;
+  	}
+  	 #hAdmin,#h2Ad{
+ 		margin-left:25px;
+ 	 	text-color:#bfbfbf;
+ 	 	font-family: "Times New Roman", Times, serif;
+ 		margin-bottom:8px;
+ 	 
+ 	 }
+  	#dugmeAdminSelekt{
+ 		margin-left:65%;
+ 		margin-top: 5px;
+ 		margin-bottom: 10px;
+ 	}
+	#autaPopusti{
+			width: 70%;
+  			margin-left:10px;
+	}
+	#dodajPopust,#postojeciPopusti{
+		    width:100%;
+			margin-left:10px;
+		
+	}
+ 	#ispisiSelect{
+ 	 	width: 40%;
+  		padding: 12px 20px;
+ 		margin: 8px 0;
+ 	 }
+ </style>
+</head>
+<body onload="loadPodatke()">
+	<div class="container-fluid">
+		<header class="nav">AirFinity </header>
+		<div id="dataContainer">
+		
+			<div class="jumbotron" id="prviJumbo">
+					<h2 id="naslov"></h2>
+					<p>On this page you can find out what kind of services we offer and where you can find us.<br> 
+						There is a list of vehicles which are available in our company.</p>
+					<p>We are here for you 24/7, at any moment you have our full support. <br>
+					   Let us make your business trip or holiday goes without stress and worries.
+					   Choose the appropriate car and relax.
+					</p>
+			</div>
+		<div class="container">
+			<div class = "row" id="tabs">
+			<article class = "col-sm-10" id="hid">
+			   <div class="container-fluid" id="pozTabovi">
+				   <ul class="nav nav-tabs">
+				    <li class="active"><a id="info">Information</a></li>
+				    <li><a id="res" >Reservations</a></li>
+				    <li><a id="fastRes" >Fast reservations</a></li>
+				    <li><a id="veh" >Vehicles</a></li>
+				    <li><a id="price" >Pricelist</a></li>
+					<li><a id="business">Business report</a></li>
+				    <li><a id="admini" >Administrators</a></li>			  
+				  	<li><a id="sistemPopust">Discounts</a></li>			  
+				  
+				  </ul>
+			   </div>
+		
+		
+		<div id = "divFast" class="container-fluid"> 
+				<section>
+			 		<div class = "row" id="infoFast">
+			 				<div class="col-xs-3">
+									     <span class="form-label">Choose drop off date</span>
+							</div>
+				   		 	<div class="col-md-5">
+									<div class="form-group">
+										 <div class="input-group">
+										    <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+											<input id = "datumFast"  class="form-control" type="date" required="required" data-placeholder="Choose the date when you want to return the car.">
+								    		<span id="errorFast"></span>
+								    	</div>
+									</div>
+							</div>
+							<div class="col-md-3">
+							    <button type="button" id="findFast" class="btn btn-default btn-lg">Find</button>
+							</div>
+					</div>  
+				   <div id="resultFast">
+					</div>
+						
+			 	</section>
+		</div>
+		<div id = "divPopust" class="container-fluid"> 
+			 	<section>
+			 	<h3 class="look">
+				   Add a discount	
+			    </h3  >
+								
+			 	<div class="container" id="autaPopusti"></div>
+			 	<div class="container" id="postojeciPopusti"></div>
+			 	<div class="container" id = "poruka">
+			 		<p id = "porukaCSS">There is no any defined discount</p>
+			 	</div>
+			 
+			 	<div class="container" id="dodajPopust">
+			 		<div class = "row">
+				   		 	<div class="col-md-6">
+									<div class="form-group">
+										 <div class="input-group">
+										<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+										<input id = "sincewhen"  class="form-control" type="date" required="required" data-placeholder="Since when">
+										<span id="errorDatPopust"></span>
+						            	</div>
+									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+											 <div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input id = "untilwhen"  class="form-control" type="date" required="required"  data-placeholder="Until when">
+												 <span id="errorEndPopust"></span>
+						            		</div>
+								   </div>
+							</div>
+				     </div>
+				     <div class="row">				   		 
+						 <div class="col-md-6" >
+								<div class="form-group" id="fg">
+										<label for="points" id="labPoeni">Number of user points:</label>			
+						 		</div>													 		
+						 		<div class="form-group">
+										<div  id="ispisiSelectBodovi">	
+										<select class="form-control" id="selectBodove"></select>	
+										</div>					
+						
+						 		</div> 
+						</div> 	  
+					 </div>	
+					 		  	  
+				    	  <div class="col-md-6">
+						 		<div id="dugmePopust"></div>
+						 </div>  			      
+			 	</div>			
+			 	</section>
+			 </div>
+			
+		
+		 <div id = "divLozinka" class="container-fluid">
+			  	<div class="polje">
+			  				<form method="post" class="changePassword" >  					
+							     <div class="form-group row">
+							        <div class="col-xs-6">	
+							            <i class="glyphicon glyphicon-eye-close"></i>
+							            <label for="pwd">Old password:</label>
+								        <input type="password"  required class="form-control" id="lozinkaOld" placeholder="Enter your password" name="loz1">
+								  	    <div id= "lozinkaError"></div>
+							        </div>
+							    </div>
+								<div class="form-group row">
+								      <div class="col-xs-6">
+									      <i class="glyphicon glyphicon-eye-close"></i>
+							              <label for="pwd">New password:</label>
+									      <input type="password" class="form-control" required id="lozinka1" placeholder="Enter new password" name="loz2">
+									      <div id='poruka'></div>	
+									  </div>			      
+							    </div>
+							    <div class="form-group row">
+								      <div class="col-xs-6">
+									      <i class="glyphicon glyphicon-eye-close"></i>
+							              <label for="pwd">Repeat new password:</label>
+									      <input type="password" class="form-control" required id="lozinka2" placeholder="Repeat password" name="loz2">
+									      <div id='poruka'></div>	
+									  </div>			      
+							    </div>  				    
+						    <button type="submit" id="potvrdiBtn1" class="btn btn-default btn-lg">Confirm</button>
+						  </form>
+			 </div>
+			
+		</div>
+			   
+			    <div id="adminStrana" class="container-fluid">
+			  		<section >
+			  			<div class="container" id="ispisiSelect">
+							<h3 id = "hAdmin">Add new administrator of rent a car</h3>
+							<select class="form-control" id="adminSelect"></select>	
+							<div><button id="dugmeAdminSelekt"  class="btn btn-info" onclick="izmjeniAdmineRenta()" >Add</button></div>
+						</div>
+			  			<div id ="adminDiv"></div>
+				    </section>
+			  </div>
+			   <div id="informacije" class="container-fluid">
+			  		<section >
+			  			<p id="opis"> </p>
+						
+						<p id="ratingServis"></p>
+						<h4 id="headquarter"><i class="glyphicon glyphicon-home"></i>Headquarters of company is in </h4>
+						<p id="adresa"></p>
+				    </section>
+				    <section >
+				    	<h3>You can find us in these cities <i class="glyphicon glyphicon-arrow-down"> </i></h3>
+						<div class="panel-group" id="filijale">
+						    
+  						</div>
+				    </section>
+			   </div>
+		<div class="container-fluid" id="bg">	   
+		<div class="container" id="booking">
+		<div id="rezultat"></div>
+			<div class="row" id="anketa">
+					<div class="form-header">
+						<h1>Make a reservation</h1>
+					</div>
+						<div class="row">
+							<div class="col-md-6">
+										<div class="form-group">
+											 <span class="form-label">Pick up location </span>
+											 <div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-map-marker"></i></span>
+												<select class="form-control" id="pickLocation">
+												</select>
+											</div>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Drop off location </span>
+											 <div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-map-marker"></i></span>
+												<select class="form-control" id="dropLocation">
+												</select>	
+											</div>
+										</div>
+							</div>
+						</div>
+						<div class="row">
+								<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Pick up date </span>
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+												<input class="form-control" id="pickDate" type="date" data-placeholder="Choose pick-up date" data-toggle="tooltip" data-placement="top" title="Date when you want to take vehicle" required>
+												<span id="error1"></span>
+											</div>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+										<span class="form-label">Drop off date </span>
+										 <div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+											<input class="form-control" id="dropDate" type="date" data-placeholder="Choose drop-off date" data-toggle="tooltip" data-placement="top" title="Date when you want to return vehicle" required>
+											<span id="error2"></span>
+										 </div>
+										</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+										<div class="form-group">
+											<span class="form-label">Category of car </span>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
+												<select class="form-control" id="tip">
+												      <option value="A" selected>A</option>
+												      <option value="B">B</option>
+												      <option value="C">C</option>
+												      <option value="D">D</option>
+												      <option value="E">E</option>
+												</select>
+											</div>
+										</div>
+							</div>
+							<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Passengers</span>
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+												<input class="form-control" type="number" id="putnici" placeholder="Enter number of passengers" min="1" max="5" required>
+												<span id="error3"></span>
+											</div>
+										</div>
+							</div>
+							<div class="col-md-3">
+											<button type="button" id="tamnoBtn" onclick="rezervisi()" class="btn  btn-lg">Search cars</button>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div> 
+			   <div id="automobili" class="container-fluid">
+				  <section id="vozila" >
+						<p>Look at the list of our cars <i class="glyphicon glyphicon-search"> </i></p>
+						<div id="pregledVozila">
+						</div>
+						
+					</section>
+			   </div>
+			   <div class="container-fluid"  id="cenovnik">
+			   <div class ="floatC" id="cenTab" >
+								<table class="table">	
+									<thead><th>Kategorija</th> <th>Cenovnik</th></thead>
+									<tbody>
+										<tr>
+											<td>A</td> 
+											<td>
+												<button type="button" class="btn btn-info" onclick="kategorija('A')">Prikazi</button>
+											</td>
+										</tr>
+										<tr>
+											<td>B</td> 
+											<td>
+												<button type="button" class="btn btn-info" onclick="kategorija('B')">Prikazi</button>
+											</td>
+										</tr>
+										<tr>
+											<td>C</td> 
+											<td>
+												<button type="button" class="btn btn-info" onclick="kategorija('C')">Prikazi</button>
+											</td>
+										</tr>
+										<tr>
+											<td>D</td> 
+											<td>
+												<button type="button" class="btn btn-info" onclick="kategorija('D')">Prikazi</button>
+											</td>
+										</tr>
+										<tr>
+											<td>E</td> 
+											<td>
+												<button type="button" class="btn btn-info" onclick="kategorija('E')">Prikazi</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+						
+				<div id="obrisiCen">
+			    </div>
+				</div>
+			   
+				<div class ="floatC" id="prikazCenovnika">
+						
+						<div id="cenovnikKategorije">
+						</div>
+				</div>
+				 <br style="clear: left;" />
+				
+			  </div>
+			  <div id="addUsluge" class="container-fluid">
+			 	<div  class="polje" >
+			 		<form method="post" class="dodavanje">
+			 		<h2>Add a service</h2>
+			 			<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Above days </span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+											<input class="form-control" type="number" id="days" placeholder="Enter number of days" min="1" required>
+										</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Price per day for A category:</span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-euro"></i></span>
+										   <input type="number" class="form-control" id="catA" min="1" placeholder="Enter Price">
+										</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Price per day for B category:</span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-euro"></i></span>
+										 <input type="number" class="form-control" id="catB" min="1" placeholder="Enter Price" >
+						      			</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Price per day for C category:</span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-euro"></i></span>
+										  <input type="number" min="0" class="form-control" id="catC" placeholder="Enter price">
+						   			   </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Price per day for D category:</span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-euro"></i></span>
+										      <input type="number" min="0" class="form-control" id="catD" placeholder="Enter price" >
+						 				</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5">
+										<div class="form-group">
+											 <span class="form-label">Price per day for E category:</span>
+											
+										</div>
+							</div>
+							<div class="col-md-5">
+										<div class="input-group">
+											<span class="input-group-addon"> <i class="glyphicon glyphicon-euro"></i></span>
+										     <input type="number" min="0" class="form-control" id="catE" placeholder="Enter price">
+					  	  				</div>
+							</div>
+						</div>
+			  <button type="button" id="potvrdiBtn" class="btn btn-default btn-lg">Add</button>
+			  </form>
+			 	</div>
+			  </div>
+			   <div id="izvestaj" class="container-fluid">
+			  		<section >
+						<p id="prosecnaOcena">Average rating of our rent-a-car service is  </p>
+						</section>
+					<p>List of our cars </p>
+						<div id="izvestajVozila">
+						</div>
+							<div class="row" >
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-folder-open"></i> </span>See income of the service 
+								</h3>
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label class="form-label">Since:</label>
+									</div>
+							   		<div class="col-xs-4" id="income">
+									   		<div class="input-group">
+												<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+												<input class="form-control" id="incomeDate" type="date" data-placeholder="Choose the begining of period" data-toggle="tooltip" data-placement="top" title="Date since when you want to calculate income" >
+												<span id="errorIncome"></span>
+											</div>
+									</div>
+									<div class="col-xs-2">
+							   			<button id="seeIncome"  class="btn btn-info" >Calculate</button>
+									</div>
+							   		<div class="col-xs-4" id="incomeResult">
+									</div>
+							    </div>
+						    			 
+						</div>
+						<div class="row" id="dayChoose">
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at number of reserved cars per day
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearCh2" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="monthCh2"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="showGraf1"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="dayChart">
+						</canvas>
+						<div class="row" id="monthChoose">
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Look at weekly reservations
+							    </h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearChart" placeholder="Enter year" >
+									</div>	   	  
+							   		<div class="col-xs-1">
+									      <label >Month:</label>
+									 </div>
+									 <div class="col-xs-3">
+									      <select class="form-control" id="monthChart"  >
+									      	<option value="1">January</option>
+									      	<option value="2">February</option>
+									      	<option value="3">March</option>
+									      	<option value="4">April</option>									      	
+									      	<option value="5">May</option>
+									      	<option value="6">June</option>
+									      	<option value="7">July</option>									      	
+									      	<option value="8">August</option>
+									      	<option value="9">September</option>								      	
+									      	<option value="10">October</option>
+									      	<option value="11">November</option>
+									      	<option value="12">December</option>
+									   	  </select>
+							   		</div>
+							   		<div class="col-xs-2">
+							   			<button id="showGraf"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="weekChart">
+						</canvas>
+						<div class="row" >
+								<h3 class="look">
+									<span> <i class="glyphicon glyphicon-calendar"></i></span>Monthly reservations
+								</h3>
+								
+								<div class="form-group row ">				      	
+							        <div class="col-xs-1">
+									      <label >Year:</label>
+									</div>
+							   		<div class="col-xs-2">
+										<input type="text" maxlength ="4" class="form-control" id="yearCh" placeholder="Enter year" >
+									</div>
+									<div class="col-xs-2">
+							   			<button id="showGraf2"  class="btn btn-info" >Show</button>
+									</div>
+							    </div>
+						    			 
+						</div>
+						<canvas id="monthGrafik">
+						</canvas>
+						
+				    
+			   </div>
+			</article>
+			<aside class="col-sm-2" id="pageAside">
+				<div class="side">
+					<p id="vozilo" class="h">Add Vehicle</p>		
+				</div>
+				<div class="side">
+					<p id="filijala" class="h">Add branch office</p>		
+				</div>
+				<div class="side">
+					<p id="usluga" class="h">Add a service</p>		
+				</div>
+				<div class="side">
+					<p id="dataAdmin" class="h">Change personal data</p>		
+				</div>
+					<div class="side">
+					<p id="passAdmin" class="h">Change password</p>		
+				</div>
+			</aside>
+			</div>
+		</div>
+			
+	</div>
+	</div>
+</body>
+</html>

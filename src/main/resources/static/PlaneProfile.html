@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plane Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript"  src="/js/planeProfile.js"></script>
+  <style>
+  	.top-buffer { margin-top:20px; }
+  	
+	  	.tt {
+			  font-family: arial, sans-serif;
+			  border-collapse: collapse;
+			  width: 100%;
+		}
+	
+	.tdd {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+  	
+  </style>
+  
+</head>
+<body onload="onLoad()">
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 ">
+		     <div class="list-group ">
+              <a href="#" class="list-group-item list-group-item-action active" onclick="info()">Info</a>
+              <a href="#" class="list-group-item list-group-item-action" onclick="konfiguracija()">Configuration</a>
+              <a href="#" class="list-group-item list-group-item-action" onclick="services()">Services</a>            
+            </div> 
+		</div>
+		<div class="col-md-9">
+		    <div class="card" id="planeInfo">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Plane Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row top-buffer">
+		                <div class="col-md-12">
+		                    <form class="plane" method="post">
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Name* : </label> 
+                                <div class="col-8">
+                                  <input id="name" name="username" placeholder="Plane name" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Configuration: </label> 
+                                <div class="col-8">
+                                  <input id="configuration" name="name" placeholder="eg(2-2-2 or 2-2)" class="form-control here" type="text">
+                                </div>
+                              </div>                                            
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-primary">Update Plane</button>
+                                </div>
+                              </div>
+                            </form>
+		                </div>
+		            </div>
+		        </div>	        
+		    </div>
+		    <div class="card" id="configurationPan">
+		        <div class="card-body">
+		        	<div class="container">
+						  <ul class="nav nav-tabs">
+						    <li class="active"><a data-toggle="tab" href="#first">First</a></li>
+						    <li><a data-toggle="tab" href="#economic">Economic</a></li>
+						    <li><a data-toggle="tab" href="#business">Business</a></li>
+						  </ul>
+						
+						  <div class="tab-content">
+						    <div id="first" class="tab-pane fade">
+						    	<div class="row top-buffer">
+						    		<h3>First class seats</h3>
+						    	</div>
+						    	<div class="row top-buffer">
+						    		<div class="col-md-7" id="firstClass"></div>
+ 									
+ 									 <div class="col-md-3 col-md-offset-1">
+ 									 	<div class="row top-buffer">
+	 									 	<form >                                                                     
+				                              <div class="form-group row">
+				                                <div class="offset-3 col-4">
+				                                  <button name="button" type="button" onclick="addSeat('first')" class="btn btn-primary">Add seat</button>
+				                                </div>
+				                              </div>
+				                              <div class="form-group row">
+				                                <div class="offset-3 col-4">
+				                                  <button name="submit" type="button" onclick="removeSeat('first')" class="btn btn-danger">Remove Seat</button>
+				                                </div>
+				                              </div>
+				                            </form>
+				                        </div>					 
+ 									 </div>
+						    	</div>
+						    </div>
+						    <div id="economic" class="tab-pane fade">
+						   		 <div class="row top-buffer">
+						    		<h3>Economic seats</h3>
+						    	</div>
+						    	<div class="row top-buffer">
+						    		<div class="col-md-7" id="economicClass"></div>
+ 									
+ 									 <div class="col-md-3 col-md-offset-1">
+ 									 	<div class="row top-buffer">
+	 									 	<form>			                                                
+				                              <div class="form-group row">
+				                                <div class="offset-4 col-4">
+				                                  <button name="button" type="button" onclick="addSeat('ekonomska')" class="btn btn-primary">Add seat</button>
+				                                </div>
+				                              </div>
+				                               <div class="form-group row">
+				                                <div class="offset-4 col-4">
+				                                  <button name="button" type="button" onclick="removeSeat('ekonomska')" class="btn btn-danger">Remove seat</button>
+				                                </div>
+				                              </div>
+				                            </form>
+				                        </div>
+ 									 </div>
+ 								</div>
+						    </div>
+						    <div id="business" class="tab-pane fade">
+						     	<div class="row top-buffer">
+						    		<h3>Business seats</h3>
+						    	</div>
+						    <div class="row top-buffer">
+						    		<div class="col-md-7" id="businessClass"></div>	
+ 									<div class="col-md-3 col-md-offset-1">										 
+ 									 	<div class="row top-buffer">
+	 									 	<form>				                                                                       
+				                              <div class="form-group row">
+				                                <div class="offset-4 col-4">
+				                                  <button name="button" type="button" onclick="addSeat('biznis')" class="btn btn-primary">Add seat</button>
+				                                </div>
+				                              </div>
+				                               <div class="form-group row">
+				                                <div class="offset-4 col-4">
+				                                 <button name="submit" type="button" onclick="removeSeat('biznis')" class="btn btn-danger">Remove Seat</button>
+				                                </div>
+				                              </div>
+				                            </form>
+				                        </div>			                       
+ 									</div>
+ 								</div>
+						    </div>
+						  </div>
+						</div>             
+		        </div>
+		    </div>
+		    
+		     <div class="card" id="services">
+		        <div class="card-body">
+		        	 <div class = "row top-buffer">
+		        	 	 <form class="service" method="post">
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Naziv* : </label> 
+                                <div class="col-8">
+                                  <input id="nazivUsluga" name="nazivUsluga" placeholder="Plane name" class="form-control here" required="required" type="text" required>
+                                </div>
+                              </div>
+                               <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Opis* : </label> 
+                                <div class="col-8">
+                                  <input id="opisUsluge" name="nazivUsluga" placeholder="Plane name" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Cena: </label> 
+                                <div class="col-8">
+                                  <input id="cenaUsluga" name="name" placeholder="Cena usluge" class="form-control here" type="number" min="0" required>
+                                </div>
+                              </div>        
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Klasa: </label> 
+                                <div class="col-8">
+                                  <select class="form-control" id="selectClassUsluga">
+										<option value = "biznis">Business</option>
+								      	<option value = "ekonomska">Economic</option>
+								      	<option value = "first">First</option>  								   
+									</select>
+                                </div>
+                              </div>                                     
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-primary">Add service</button>
+                                </div>
+                              </div>
+                            </form>
+		        	 </div>
+		        	 <div class = "row top-buffer">
+						<div class="panel panel-primary filterable">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">Usluge</h3>
+				                <div class="pull-right">
+				                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+				                </div>
+				            </div>
+				            <table class="table table-filtered" >
+				                <thead>
+				                    <tr class="filters">
+				                        <th><input type="text" class="form-control" placeholder="Naziv" disabled></th>
+				                        <th><input type="text" class="form-control" placeholder="Cena" disabled></th>
+				                        <th><input type="text" class="form-control" placeholder="Klasa" disabled></th>
+				                        <th><input type="text" class="form-control" placeholder="Opis" disabled></th>
+				                    </tr>
+				                </thead>
+				    			<tbody id="tabelaFil">
+				    			
+								</tbody >
+				            </table>
+					      </div>		        	 	
+		        	 </div> 
+		        </div>
+		    </div>
+		    
+		    
+		    
+		</div>
+	</div>
+</div>
+</body>
+</html>
